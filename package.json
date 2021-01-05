@@ -1,0 +1,44 @@
+{
+  "name": "iff-root",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "Apache 2.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "modular": {
+    "type": "root"
+  },
+  "scripts": {
+    "start": "modular start app",
+    "build": "modular build app",
+    "test": "modular test",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "prettier": "prettier --write ."
+  },
+  "eslintConfig": {
+    "extends": "modular-app"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "proseWrap": "always"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "eslint-config-modular-app": "^0.3.1",
+    "modular-scripts": "^0.8.1",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "typescript": "^4.1.2"
+  }
+}
