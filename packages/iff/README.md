@@ -33,3 +33,8 @@ const value = iff('flag-name', defaultValue);
 - `iff outdated`: Scan a codebase, and output which flags are at 100%/full
   rollout in a service. Used to cleanup old flags and unused code branches from
   a codebase.
+
+### Thanks
+
+Thanks to [Jon Brennecke](https://github.com/jonbrennecke) for giving us the
+package name `iff`.
