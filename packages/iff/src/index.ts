@@ -1,4 +1,4 @@
-export default function iff<T>(flagName: string, defaultValue?: T) {
+export default function iff(flagName: string) {
   // test once if values have been preloaded
   // freeze
   // in dev, make sure it's shallow?

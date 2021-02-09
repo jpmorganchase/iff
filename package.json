@@ -15,7 +15,7 @@
     "build": "modular build app",
     "test": "modular test",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write packages"
   },
   "eslintConfig": {
     "extends": "modular-app"
@@ -24,7 +24,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "printWidth": 80,
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "semi": true
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",

@@ -18,7 +18,7 @@ service.
 ```js
 import iff from 'iff';
 
-const value = iff('flag-name', defaultValue);
+const value = iff('flag-name');
 ```
 
 ### Setup

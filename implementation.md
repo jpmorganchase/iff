@@ -20,15 +20,15 @@ import iff from 'iff';
 
 // ...
 
-const flagValue = iff('flag-name', defaultValue);
+const flagValue = iff('flag-name');
 ```
 
 This basic experience already raises some implementation details:
 
-- We would like for this call to be typechecked, so `defaultValue` errors if
-  it's of the wrong type. The data for the type of `'some-flag-name'` will be
-  inside the service, which means we need a tool that will pull this data from
-  the service and generate a local `iff.d.ts` signature (during build?
+- We would like for this call to be typechecked, so `'flag-name'` errors if it's
+  of the wrong type (i.e. not a string). The data for the type of `'flag-name'`
+  will be inside the service, which means we need a tool that will pull this
+  data from the service and generate a local `iff.d.ts` signature (during build?
   periodically on dev's machines?).
 - The `iff()` call is synchronous. What we'd like, is for all required flags to
   be fetched at one go when the application is started. This would be great.
