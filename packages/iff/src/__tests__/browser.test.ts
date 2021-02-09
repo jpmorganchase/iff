@@ -1,3 +1,4 @@
+/* eslint-disable no-native-reassign */
 import iff from '../browser';
 
 const originalWindow = window;
@@ -6,6 +7,7 @@ describe('iff browser', () => {
   const testFlag = 'feature-flagging-enable';
   describe('when flagName is not a string type', () => {
     it('should throw a type error', () => {
+      // @ts-expect-error
       expect(() => iff({ [testFlag]: true })).toThrow(
         new TypeError('flagName must be a string'),
       );
@@ -14,11 +16,10 @@ describe('iff browser', () => {
   describe('when flagName is a string type', () => {
     describe('when window.__iff_VALUES__ exists', () => {
       beforeEach(() => {
-        // eslint-disable-next-line no-native-reassign
+        // @ts-expect-error
         window.__iff_VALUES__ = { [testFlag]: true };
       });
       afterEach(() => {
-        // eslint-disable-next-line no-native-reassign
         window = originalWindow;
       });
       describe('when that flag name can be found in __iff_VALUES__', () => {
@@ -34,11 +35,10 @@ describe('iff browser', () => {
     });
     describe('when window.__iff_VALUES__ does not exist', () => {
       beforeEach(() => {
-        // eslint-disable-next-line no-native-reassign
+        // @ts-expect-error
         window.__iff_VALUES__ = undefined;
       });
       afterEach(() => {
-        // eslint-disable-next-line no-native-reassign
         window = originalWindow;
       });
       it('should throw an error', () => {
