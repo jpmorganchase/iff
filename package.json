@@ -11,7 +11,7 @@
     "type": "root"
   },
   "scripts": {
-    "start": "modular start app",
+    "start": "NODE_PATH=packages/ modular start app",
     "build": "modular build app",
     "test": "modular test",
     "lint": "eslint . --ext .js,.ts,.tsx",

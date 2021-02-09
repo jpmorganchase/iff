@@ -16,7 +16,6 @@ describe('iff browser', () => {
   describe('when flagName is a string type', () => {
     describe('when window.__iff_VALUES__ exists', () => {
       beforeEach(() => {
-        // @ts-expect-error
         window.__iff_VALUES__ = { [testFlag]: true };
       });
       afterEach(() => {
@@ -35,7 +34,6 @@ describe('iff browser', () => {
     });
     describe('when window.__iff_VALUES__ does not exist', () => {
       beforeEach(() => {
-        // @ts-expect-error
         window.__iff_VALUES__ = undefined;
       });
       afterEach(() => {

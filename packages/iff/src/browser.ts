@@ -1,5 +1,9 @@
+declare global {
+  interface Window {
+    __iff_VALUES__: any;
+  }
+}
 export default function iff(flagName: string) {
-  // @ts-expect-error
   const flags = window.__iff_VALUES__;
   if (typeof flagName !== 'string') {
     throw new TypeError('flagName must be a string');
