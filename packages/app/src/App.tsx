@@ -1,8 +1,11 @@
 import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import iff from 'iff'
+
 
 function App(): JSX.Element {
+  const feature = iff('featureflagging.in.cib.enable');
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +21,9 @@ function App(): JSX.Element {
         >
           Learn React
         </a>
+        {
+          feature && <p>Feature Flagging is enabled for you</p>
+        }
       </header>
     </div>
   );

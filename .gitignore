@@ -24,3 +24,5 @@ yarn-error.log*
 
 .eslintcache
 dist
+
+iffValues.json
