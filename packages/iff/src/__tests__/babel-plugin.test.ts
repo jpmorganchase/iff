@@ -45,17 +45,17 @@ describe('iff scan babel plugin', () => {
     expect(result?.code).toMatchSnapshot();
   });
   describe('when scanning files with an iff import and call', () => {
-    it('should add the first argument of each iff call to iffValues.json', () => {
+    it('should add the first argument of the iff call to iffValues.json', () => {
       const filename = path.join(__dirname, 'fixtures', 'importIff.js');
       const source = fs.readFileSync(filename, 'utf8');
       transform(source, {
         filename: 'babel-plugin.tests.ts',
         extends: projectBabelConfig,
       });
-      const outputFile = JSON.parse(
+      const iffValues = JSON.parse(
         fs.readFileSync(outputSourceFilePath, 'utf8'),
       );
-      expect(Object.keys(outputFile).includes('test-flag')).toBe(true);
+      expect(Object.keys(iffValues).includes('test-flag')).toBe(true);
     });
     it('should tally the number of times a flag name was used in a file', () => {
       const filename = path.join(__dirname, 'fixtures', 'importIff.js');
@@ -64,10 +64,10 @@ describe('iff scan babel plugin', () => {
         filename: 'babel-plugin.tests.ts',
         extends: projectBabelConfig,
       });
-      const outputFile = JSON.parse(
+      const iffValues = JSON.parse(
         fs.readFileSync(outputSourceFilePath, 'utf8'),
       );
-      expect(outputFile).toEqual({ 'test-flag': 2 });
+      expect(iffValues).toEqual({ 'test-flag': 2 });
     });
     it('should keep a running tally of every occurence of flag name after scanning all files', () => {
       const importIff = path.join(__dirname, 'fixtures', 'importIff.js');
@@ -86,14 +86,14 @@ describe('iff scan babel plugin', () => {
         filename: 'babel-plugin.tests.ts',
         extends: projectBabelConfig,
       });
-      const outputFile = JSON.parse(
+      const iffValues = JSON.parse(
         fs.readFileSync(outputSourceFilePath, 'utf8'),
       );
       const expcted = {
         'test-flag': 3,
         'cool-name': 1,
       };
-      expect(outputFile).toMatchObject(expcted);
+      expect(iffValues).toMatchObject(expcted);
     });
   });
   describe('when there is no iff import', () => {
