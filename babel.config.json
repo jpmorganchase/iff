@@ -1,5 +1,5 @@
 {
-  "plugins": ["./packages/babel-plugin.js"],
+  "plugins": ["./packages/iff/src/babel-plugin.js"],
   "presets": [
     "@babel/preset-typescript",
     "@babel/preset-react",

@@ -1,30 +1,29 @@
-const fs = require('fs');
-
-module.exports = function({ types: t}) {
+var fs = require('fs');
+module.exports = function iffScan() {
   return {
-    pre(state) {
-      this.importVar = ''
-      this.cache = {}
+    pre: function () {
+      this.importVar = '';
+      this.cache = {};
     },
     visitor: {
-      ImportDeclaration(path, state) {
-        if(path.node.source.value !== 'iff'){
-          return
+      ImportDeclaration: function (path) {
+        if (path.node.source.value !== 'iff') {
+          return;
         }
         // Depending on how iff is exported, we may need to change this
-        const defaultImport= path.node.specifiers.find(
-          ({ type }) => type === 'ImportDefaultSpecifier'
-        );
+        var defaultImport = path.node.specifiers.find(function (node) {
+          return node.type === 'ImportDefaultSpecifier';
+        });
         this.importVar = defaultImport.local.name;
       },
       // This section is for server side iff scan and won't be worked on in the initial design phase
-      // VariableDeclarator(path, state) {
+      // VariableDeclarator(this: BabelScan, path: { [key: string]: any }) {
       //   if(path.node.init?.callee?.name !== 'require' && path.node.init?.arguments?[0]?.value !== 'iff') {
       //     return
       //   }
       //   this.importVar = path.node.id.name;
       // },
-      CallExpression(path, state) {
+      CallExpression: function (path) {
         if (path.node.callee.name === this.importVar) {
           if (this.cache[path.node.arguments[0].value]) {
             this.cache[path.node.arguments[0].value]++;
@@ -34,16 +33,25 @@ module.exports = function({ types: t}) {
         }
       },
     },
-    post(state) {
-      let currentffValues = {};
+    post: function () {
+      var _this = this;
+      var scannedKeys = Object.keys(this.cache);
+      if (!scannedKeys.length) {
+        return;
+      }
+      var currentValues = {};
       // we can either set the filename as a flag or give users the ability to set this in a config
       if (fs.existsSync('./iffValues.json')) {
-        currentffValues = JSON.parse(fs.readFileSync('./iffValues.json'));
+        currentValues = JSON.parse(fs.readFileSync('./iffValues.json'));
       }
+      scannedKeys.forEach(function (key) {
+        return (currentValues[key] =
+          (currentValues[key] ? currentValues[key] : 0) + _this.cache[key]);
+      });
       fs.writeFileSync(
         './iffValues.json',
-        JSON.stringify({ ...currentffValues, ...this.cache }, null, 2)
+        JSON.stringify(currentValues, null, 2),
       );
     },
   };
-}
+};
