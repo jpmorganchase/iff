@@ -1,12 +1,14 @@
 const fs = require('fs');
+export {};
 
 interface BabelScan {
   importVar: string;
   cache: { [key: string]: number };
 }
 
-module.exports = function iffScan(this: BabelScan) {
+module.exports = function (this: BabelScan) {
   return {
+    name: 'iff scan',
     pre(this: BabelScan) {
       this.importVar = '';
       this.cache = {};

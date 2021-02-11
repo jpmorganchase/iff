@@ -13,7 +13,7 @@
   "scripts": {
     "start": "NODE_PATH=packages/ modular start app",
     "build": "modular build app",
-    "test": "modular test",
+    "test": "modular test ",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "prettier": "prettier --write packages",
     "iff-scan": "rm -rf ./iffValues.json && babel packages/app --extensions .ts,.tsx"
@@ -29,6 +29,12 @@
     "semi": true
   },
   "dependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-strict-mode": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
@@ -36,18 +42,13 @@
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "babel-plugin-tester": "^10.0.0",
     "eslint-config-modular-app": "^0.3.1",
+    "fs": "^0.0.1-security",
     "modular-scripts": "^0.9.1",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "typescript": "^4.1.2",
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/plugin-transform-strict-mode": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "@babel/preset-typescript": "^7.12.13",
-    "@babel/preset-react": "^7.12.13",
-    "fs": "^0.0.1-security"
+    "typescript": "^4.1.2"
   }
 }

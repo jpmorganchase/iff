@@ -1,6 +1,9 @@
+"use strict";
+exports.__esModule = true;
 var fs = require('fs');
-module.exports = function iffScan() {
+module.exports = function () {
     return {
+        name: 'iff scan',
         pre: function () {
             this.importVar = '';
             this.cache = {};
