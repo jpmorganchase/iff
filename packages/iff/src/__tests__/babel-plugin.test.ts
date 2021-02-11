@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 const pathToProjectRootFromHere = '../../../../';
+
 const projectBabelConfig = path.join(
   __dirname,
   pathToProjectRootFromHere,
@@ -69,7 +70,7 @@ describe('iff scan babel plugin', () => {
       );
       expect(iffValues).toEqual({ 'test-flag': 2 });
     });
-    it('should keep a running tally of every occurence of flag name after scanning all files', () => {
+    it('should keep a running tally of every occurence of flag name after scanning multiple files', () => {
       const importIff = path.join(__dirname, 'fixtures', 'importIff.js');
       const importIffSource = fs.readFileSync(importIff, 'utf8');
       const importIffAlias = path.join(
