@@ -2,7 +2,7 @@ const fs = require('fs');
 
 interface BabelScan {
   importVar: string;
-  cache: { [key: string]: any };
+  cache: { [key: string]: number };
 }
 
 module.exports = function iffScan(this: BabelScan) {
