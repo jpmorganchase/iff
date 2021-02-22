@@ -72,7 +72,6 @@ describe('iff scan', () => {
       console.warn.mockRestore();
     });
     it('should not change any code', () => {
-      scan(fixturesPath);
       expect(
         fs
           .readFileSync(path.join(fixturesPath, 'noIffImport.js'), 'utf8')
@@ -86,7 +85,6 @@ describe('iff scan', () => {
       `);
     });
     it('should not continue in that file', () => {
-      scan(fixturesPath);
       expect(console.warn).toHaveBeenCalledTimes(0);
     });
   });

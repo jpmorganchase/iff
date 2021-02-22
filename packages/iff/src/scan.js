@@ -1,4 +1,4 @@
-
+"use strict";
 exports.__esModule = true;
 var parser_1 = require("@babel/parser");
 var traverse_1 = require("@babel/traverse");
