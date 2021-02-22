@@ -27,6 +27,8 @@
     "proseWrap": "always"
   },
   "dependencies": {
+    "@babel/parser": "^7.12.15",
+    "@babel/traverse": "^7.12.13",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
@@ -34,7 +36,9 @@
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/fs-extra": "^9.0.7",
     "eslint-config-modular-app": "^0.3.1",
+    "fs-extra": "^9.1.0",
     "modular-scripts": "^0.9.1",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
