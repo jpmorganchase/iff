@@ -1,6 +1,13 @@
 export default function iff<T>(flagName: string, defaultValue?: T) {
-  // test once if values have been preloaded
-  // freeze
-  // in dev, make sure it's shallow?
-  console.log('soon!');
+  // @ts-expect-error
+  const flags = window.__IFF_VALUES__;
+  if (flags === undefined) {
+    throw new Error('feature flags were not populated');
+  }
+
+  if (flags[flagName] === undefined) {
+    return defaultValue;
+  }
+
+  return flags[flagName];
 }
